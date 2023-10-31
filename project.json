@@ -1,5 +1,6 @@
 {
   "name": "AutomationOps_SourceControl_Oct2023",
+  "projectId": "9d0fb2f4-64aa-4b61-a50f-b5597032a2d3",
   "description": "Blank Process",
   "main": "Main.xaml",
   "dependencies": {
@@ -44,7 +45,8 @@
       "ignoredFiles": []
     },
     "fileInfoCollection": [],
-    "modernBehavior": true
+    "modernBehavior": true,
+    "saveToCloud": false
   },
   "expressionLanguage": "VisualBasic",
   "entryPoints": [
