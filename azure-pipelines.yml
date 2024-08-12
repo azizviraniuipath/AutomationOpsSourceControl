@@ -16,6 +16,10 @@ steps:
     packagesToPack: '**/*.csproj'
     versioningScheme: 'off'
 
+- task: DownloadSecureFile@1
+  inputs:
+    secureFile: 'NuGetTestDeveloper1.pfx'
+
 - task: NuGetCommand@2
   inputs:
     command: 'push'
