@@ -10,10 +10,12 @@ pool:
   vmImage: 'windows-latest'
 
 steps:
-- task: NuGetCommand@2
+- task: UiPathPack@4
   inputs:
-    command: 'pack'
-    packagesToPack: '**/*.nuget'
+    versionType: 'AutoVersion'
+    projectJsonPath: '$(Build.SourcesDirectory)'
+    orchestratorConnection: 'UiPathOrchestratorConnection'
+    outputPath: '$(Build.ArtifactStagingDirectory)\Output'
 
 - task: NuGetCommand@2
   inputs:
