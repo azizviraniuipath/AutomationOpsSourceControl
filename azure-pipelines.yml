@@ -11,11 +11,12 @@ pool:
 
 steps:
 # Package a project
-- task: NuGetCommand@2
+- task: UiPathPack@4
   inputs:
-    command: 'pack'
-    packagesToPack: '**/*.csproj'
-    packDestination: '$(Build.ArtifactStagingDirectory)\Output'
+    versionType: 'AutoVersion'
+    projectJsonPath: '$(Build.SourcesDirectory)'
+    orchestratorConnection: 'UiPathOrchestratorConnection'
+    outputPath: '$(Build.ArtifactStagingDirectory)\Output'
 
 - task: DownloadSecureFile@1
   inputs:
