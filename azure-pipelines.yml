@@ -29,7 +29,7 @@ steps:
 - task: NuGetCommand@2
   inputs:
     command: 'custom'
-    arguments: 'sign $(Build.ArtifactStagingDirectory)\Output/**/*.nupkg -CertificatePath $(cert.secureFilePath) -CertificatePassword 1234'
+    arguments: 'sign $(Build.ArtifactStagingDirectory)\Output/**/*.nupkg -CertificatePath $(cert.secureFilePath)'
 
 - task: NuGetCommand@2
   inputs:
