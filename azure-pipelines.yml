@@ -10,10 +10,11 @@ pool:
   vmImage: 'windows-latest'
 
 steps:
+# Pack a NuGet package to a test directory
 - task: DotNetCoreCLI@2
-  inputs:
-    command: 'build'
-    projects: '$(Build.SourcesDirectory)'
+  inputs: 
+    command: 'pack'
+    outputDir: '$(Build.ArtifactStagingDirectory)/Output'
 
 - task: DownloadSecureFile@1
   inputs:
@@ -22,7 +23,7 @@ steps:
 - task: DotNetCoreCLI@2
   inputs:
     command: 'push'
-    packagesToPush: '$(Build.ArtifactStagingDirectory)/*.nupkg'
+    packagesToPush: '$(Build.ArtifactStagingDirectory)/output/*.nupkg'
     nuGetFeedType: 'internal'
     publishVstsFeed: '21297ca9-7b65-487d-9bc5-dd78bbf02267/7af5a2c8-9d02-4be6-af56-faf8507c885a'
 
