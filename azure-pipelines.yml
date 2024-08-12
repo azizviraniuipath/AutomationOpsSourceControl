@@ -13,7 +13,7 @@ steps:
 - task: NuGetCommand@2
   inputs:
     command: 'pack'
-    packagesToPack: '**/*.csproj'
+    packagesToPack: '**/*.nupkg'
     versioningScheme: 'off'
 
 - task: DownloadSecureFile@1
