@@ -41,5 +41,5 @@ steps:
 - task: UiPathDeploy@4
   inputs:
     orchestratorConnection: 'UiPathOrchestratorConnection'
-    packagesPath: '$(Build.ArtifactStagingDirectory)\Output/**/*.nupkg'
+    packagesPath: '$(Build.ArtifactStagingDirectory)\Output'
     folderName: 'AzureDevOpsFolder'
