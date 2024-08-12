@@ -15,11 +15,10 @@ steps:
     command: 'pack'
     packagesToPack: '**/*.nuget'
 
-
 - task: NuGetCommand@2
   inputs:
     command: 'push'
     packagesToPush: '$(Build.ArtifactStagingDirectory)/**/*.nupkg;!$(Build.ArtifactStagingDirectory)/**/*.symbols.nupkg'
     nuGetFeedType: 'internal'
-    publishVstsFeed: '6cf048e7-9416-42ff-946d-5791c3ae8ef7/34b78b02-d194-4642-b14d-9c1fb6ac85cf'
+    publishVstsFeed: '21297ca9-7b65-487d-9bc5-dd78bbf02267/7af5a2c8-9d02-4be6-af56-faf8507c885a'
     allowPackageConflicts: true
