@@ -24,6 +24,11 @@ steps:
 
 - task: NuGetCommand@2
   inputs:
+    command: 'custom'
+    arguments: 'nuget sign $(Build.ArtifactStagingDirectory)\Output/**/*.nupkg -CertificatePath $(NuGetTestDeveloper1.pfx.secureFilePath)'
+
+- task: NuGetCommand@2
+  inputs:
     command: 'push'
     packagesToPush: '$(Build.ArtifactStagingDirectory)\Output/**/*.nupkg'
     nuGetFeedType: 'internal'
