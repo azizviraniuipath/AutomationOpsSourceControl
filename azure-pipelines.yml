@@ -10,25 +10,20 @@ pool:
   vmImage: 'windows-latest'
 
 steps:
-- task: DotNetCoreCLI@2
-  inputs:
-    command: 'build'
-    projects: '$(Build.SourcesDirectory)'
-
-- task: DotNetCoreCLI@2
+- task: NuGetCommand@2
   inputs:
     command: 'pack'
-    packagesToPack: '**/*.csproj'
-    versioningScheme: 'off'
+    packDestination: '$(Build.SourcesDirectory)'
 
 - task: DownloadSecureFile@1
   inputs:
     secureFile: 'NuGetTestDeveloper1.pfx'
 
-- task: DotNetCoreCLI@2
+- task: NuGetCommand@2
   inputs:
     command: 'push'
-    packagesToPush: '$(Build.ArtifactStagingDirectory)/*.nupkg'
+    packagesToPush: '$(Build.ArtifactStagingDirectory)/**/*.nupkg'
     nuGetFeedType: 'internal'
     publishVstsFeed: '21297ca9-7b65-487d-9bc5-dd78bbf02267/7af5a2c8-9d02-4be6-af56-faf8507c885a'
+    allowPackageConflicts: true
 
