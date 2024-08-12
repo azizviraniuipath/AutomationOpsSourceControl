@@ -19,13 +19,17 @@ steps:
     outputPath: '$(Build.ArtifactStagingDirectory)\Output'
 
 - task: DownloadSecureFile@1
+  name: cert
   inputs:
     secureFile: 'NuGetTestDeveloper1.pfx'
+
+- script: |
+    echo Installing $(caCertificate.secureFilePath) to the trusted CA directory...
 
 - task: NuGetCommand@2
   inputs:
     command: 'custom'
-    arguments: 'nuget sign $(Build.ArtifactStagingDirectory)\Output/**/*.nupkg -CertificatePath $(NuGetTestDeveloper1.pfx.secureFilePath)'
+    arguments: 'nuget sign $(Build.ArtifactStagingDirectory)\Output/**/*.nupkg -CertificatePath $(cert.secureFilePath)'
 
 - task: NuGetCommand@2
   inputs:
